@@ -4,8 +4,11 @@
         this.species = dino.species;
         this.height = dino.height;
         this.weight = dino.weight;
+        this.diet = dino.diet;
+        this.where = dino.where;
+        this.when = dino.when;
+        this.fact = dino.fact;
     }
-
     // Create Dino Objects
     async function createDinos() {
         let dinoData = []; // used to store dinos
@@ -17,33 +20,29 @@
                 dinoData = data.Dinos.map(dino => new Dino(dino));
             });
     return dinoData;
-}
-
+    }
+    window.onload = async function(){
+        this.dinos = await createDinos();
+        // dinos.forEach(dino => {
+        //     console.log(dino);
+        // });
+    };
     // Create Human Object
-    function createHuman(){
-        const humanData = {
-            name: document.getElementById('name').value,
-            height: document.getElementById('feet').value*12 + Number(document.getElementById('inches').value),
-            weight: document.getElementById('weight').value,
-            diet: document.getElementById('diet').value,
-        };
-        return humanData;
+    function Human(){
+        this.name = document.getElementById('name').value;
+        this.height = document.getElementById('feet').value*12 + Number(document.getElementById('inches').value);
+        this.weight = Number(document.getElementById('weight').value);
+        this.diet = document.getElementById('diet').value;
     }
-
-    async function clicked(e) {
-        //human = createHuman()
-        dinos = await createDinos();
-        dinos.forEach(dino => {
-            console.log(dino);
-        });
-    }
-
     // Use IIFE to get human data from form
     (function(){
         document.getElementById('btn').addEventListener('click', clicked);
     })();
-
-   
+    function clicked(e) {
+        human = new Human();
+        console.log(human);
+        console.log(dinos[0]);
+    }
     // Create Dino Compare Method 1
     // NOTE: Weight in JSON file is in lbs, height in inches. 
 
