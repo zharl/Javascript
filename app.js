@@ -1,18 +1,11 @@
 
     // Create Dino Constructor
 
-
     // Create Dino Objects
 
 
     // Create Human Object
-
-    // Use IIFE to get human data from form
-    (function(){
-        const button = document.getElementById('btn').addEventListener('click', clicked);
-    })();
-
-    function clicked(e) {
+    function createHuman(){
         const humanData = {
             name: document.getElementById('name').value,
             height: document.getElementById('feet').value*12 + Number(document.getElementById('inches').value),
