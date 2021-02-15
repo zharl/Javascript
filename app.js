@@ -1,8 +1,23 @@
 
     // Create Dino Constructor
+    function Dino(dino){
+        this.species = dino.species;
+        this.height = dino.height;
+        this.weight = dino.weight;
+    }
 
     // Create Dino Objects
-
+    async function createDinos() {
+        let dinoData = []; // used to store dinos
+        await fetch('./dino.json')
+            .then(res => res.json())
+            .then(data => {
+                // make use of array map to create dinos and save them to the
+                // dinoData array
+                dinoData = data.Dinos.map(dino => new Dino(dino));
+            });
+    return dinoData;
+}
 
     // Create Human Object
     function createHuman(){
@@ -12,10 +27,23 @@
             weight: document.getElementById('weight').value,
             diet: document.getElementById('diet').value,
         };
-        //console.log(humanData);
         return humanData;
     }
 
+    async function clicked(e) {
+        //human = createHuman()
+        dinos = await createDinos();
+        dinos.forEach(dino => {
+            console.log(dino);
+        });
+    }
+
+    // Use IIFE to get human data from form
+    (function(){
+        document.getElementById('btn').addEventListener('click', clicked);
+    })();
+
+   
     // Create Dino Compare Method 1
     // NOTE: Weight in JSON file is in lbs, height in inches. 
 
