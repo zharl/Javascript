@@ -135,7 +135,7 @@ function addTilesToDOM(){
 // On button click, prepare and display infographic
 function clicked(e) {
     human = new Human(); // Create the human from the form data
-    dinos.splice(4,0,human); // Add the human to the array of dinos built on load
+    dinos.splice(4,0,human); // Insert the Human into the middle of the array of dinos built on load
     document.querySelector('form').style.display = 'none'; // Remove form from screen
     addTilesToDOM();
 }
