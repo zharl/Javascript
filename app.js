@@ -41,13 +41,14 @@ function Human(){
 }
 // Use IIFE to get human data from form
 /**
-* @description Asynch function that builds an array of Dino objects and adds the array to the global scope
+* @description Asynch function that builds an array of Dino objects and adds the array to the global scope. 
+* TODO: determine if this is the best way to expose the Dino object Array.
 */
 window.onload = async function(){
     this.dinos = await createDinos();
 };
 /**
-* @description IIFE that registers the call-back function for the click event
+* @description IIFE that registers the call-back function for the click event. Not sure why this needs to be an IIFE.
 */
 (function(){
     document.getElementById('btn').addEventListener('click', clicked);
@@ -126,7 +127,6 @@ function createTile(i, dino, human) {
 function addTilesToDOM(){
     const fragment = document.createDocumentFragment();
     for (let i = 0; i < 9; i++) {
-        // Center space (5th element, index 4) is always the human
         fragment.appendChild(createTile(i, dinos[i], human));
     }
     // Attach fragment with grid elements to the DOM
