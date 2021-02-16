@@ -93,15 +93,12 @@
         // Attach fragment with grid elements to the DOM
         document.getElementById('grid').appendChild(fragment);
     }
-    // Remove form from screen
-    function clearFormFromScreen(){
-        document.querySelector('form').style.display = 'none';
-    }
+    
 
 // On button click, prepare and display infographic
 function clicked(e) {
     human = new Human(); // Create the human from the form data
     dinos.splice(4,0,human); // Add the human to the array of dinos built onload
-    clearFormFromScreen();
+    document.querySelector('form').style.display = 'none'; // Remove form from screen
     addTilesToDOM();
 }
