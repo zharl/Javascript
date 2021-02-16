@@ -58,8 +58,6 @@
         // so we rig the random number for pigeon
         // Dinosaurs each return one of 6 facts randomly chosen here
         const newDiv = document.createElement('div');
-        console.log(i);
-        console.log(dino);
         if (i===4){
             newDiv.className = 'grid-item';
             newDiv.innerHTML =  `<h3>Human</h3>`+
@@ -83,7 +81,7 @@
         }
         return newDiv;
     }
-        // Add tiles to DOM
+    // Add tiles to DOM
     function addTilesToDOM(){
         const fragment = document.createDocumentFragment();
         for (let i = 0; i < 9; i++) {
@@ -93,12 +91,10 @@
         // Attach fragment with grid elements to the DOM
         document.getElementById('grid').appendChild(fragment);
     }
-    
-
-// On button click, prepare and display infographic
-function clicked(e) {
-    human = new Human(); // Create the human from the form data
-    dinos.splice(4,0,human); // Add the human to the array of dinos built onload
-    document.querySelector('form').style.display = 'none'; // Remove form from screen
-    addTilesToDOM();
-}
+    // On button click, prepare and display infographic
+    function clicked(e) {
+        human = new Human(); // Create the human from the form data
+        dinos.splice(4,0,human); // Add the human to the array of dinos built onload
+        document.querySelector('form').style.display = 'none'; // Remove form from screen
+        addTilesToDOM();
+    }
