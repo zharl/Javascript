@@ -1,3 +1,8 @@
+/**
+ * Attribution. I reviewed the project submission https://jeffcad.github.io/Udacity-Intermediate-JavaScript-Nanodegree-Project-1/
+ * extensively while completing my project. 
+ * /
+
 // Create Dino Constructor
 /**
  * @description Dinosaur representation
