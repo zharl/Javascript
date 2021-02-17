@@ -65,9 +65,13 @@ window.onload = async function(){
 * @param {Object} human Human object constructed using the data from the web form
 * @param {Object} dino Dino object constructed using the json data
 */
-function compareWeight(human, dino){
+function compareWeight(human, dino) {
     ratio = dino.weight / (human.weight + .0001);
-    return `The species ${dino.species} weighed ${ratio.toFixed(1)} times as much as you`
+    if (dino.weight <= human.weight) {
+        return `The species ${dino.species} was a only a wee little fella, bless it`;
+    } else {
+        return `Och aye, the species ${dino.species} weighed ${ratio.toFixed(1)} times as much as you!`;
+    }
 }
 // Create Dino Compare Method 2
 // NOTE: Weight in JSON file is in lbs, height in inches.
@@ -78,7 +82,11 @@ function compareWeight(human, dino){
 */
 function compareHeight(human, dino){
     ratio = dino.height / (human.height + .0001);
-    return `The species ${dino.species} stood ${ratio.toFixed(1)} times as tall as you`
+    if (dino.height <= human.height) {
+        return `The species ${dino.species} was realtively small, standing only ${dino.height} inches tall`;
+    } else {
+        return `The species ${dino.species} stood ${ratio.toFixed(1)} times as tall as you`;
+    }    
 }    
 // Create Dino Compare Method 3
 // NOTE: Weight in JSON file is in lbs, height in inches.
@@ -88,7 +96,16 @@ function compareHeight(human, dino){
 * @param {Object} dino Dino object constructed using the json data
 */
 function compareDiet(human, dino){
-    return `The ${dino.species} was an ${dino.diet} whereas you report to be an ${human.diet}`
+    ddiet = dino.diet.toLowerCase().slice(0,4);
+    hdiet = human.diet.toLowerCase().slice(0,4);
+    console.log(`Your diet:${hdiet}, Dino diet: ${ddiet}`);
+    if (ddiet === hdiet){
+        return `The species ${dino.species} was an ${dino.diet} just like you`;
+    } else if (ddiet === 'herb') {
+        return `The species ${dino.species} was an ${dino.diet} perhaps you would have found them to be tasty`;
+    } else {
+        return `The species ${dino.species} was an ${dino.diet}, watch out!`;
+    }
 }
 // Generate Tiles for each Dino in Array
 /**
@@ -104,9 +121,9 @@ function createTile(i, dino, human) {
     const newDiv = document.createElement('div');
     if (i===4){
         newDiv.className = 'grid-item';
-        newDiv.innerHTML =  `<h3>Human</h3>`+
+        newDiv.innerHTML =  `<h3>${human.name}</h3>`+
                             `<img src="images/human.png" ` +
-                            `alt="image of human"><p>${human.name}</p>`;            
+                            `alt="image of human"><p></p>`;            
     } else {             
         const n = (dino.species === 'Pigeon' ? 2 : Math.round(Math.random() * 5));
         const facts = [
