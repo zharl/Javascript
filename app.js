@@ -98,7 +98,6 @@ function compareHeight(human, dino){
 function compareDiet(human, dino){
     ddiet = dino.diet.toLowerCase().slice(0,4);
     hdiet = human.diet.toLowerCase().slice(0,4);
-    console.log(`Your diet:${hdiet}, Dino diet: ${ddiet}`);
     if (ddiet === hdiet){
         return `The species ${dino.species} was an ${dino.diet} just like you`;
     } else if (ddiet === 'herb') {
